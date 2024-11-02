@@ -50,7 +50,7 @@ export default defineComponent({
             if (percent) {
               ref.style.width = `${percent}%`;
             }
-          }, index * 400);
+          }, index * 200);
         }
       });
     };
@@ -69,9 +69,9 @@ export default defineComponent({
 
 .skill-card {
   width: 100%;
-  padding: 1rem;
-  background-color: #fff;
+  //padding: .3rem;
   transition: box-shadow 0.3s ease;
+  font-weight: bold;
 }
 
 .progress-container {

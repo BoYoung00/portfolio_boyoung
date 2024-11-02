@@ -1,20 +1,17 @@
 <template>
   <div>
-    <section ref="introSection" class="introSection animated-section">
-      <div>
-        <h1>안녕하세요, 끊임없이 도전하며</h1>
-        <h1>성장하는 프론트엔드 개발자가 되고 싶은</h1>
-        <h1>김보영입니다.</h1>
-      </div>
-    </section>
+    <FirstPage />
     <section ref="skillsSection" class="skillsSection animated-section">
-      <h2>기술 스택</h2>
+      <h2 class="contentsTitle">기술 스택</h2>
       <div class="skills-list">
-        <SkillCard ref="skillCardRef" :skills="skills" />
+        <SkillCard ref="skillsLanCardRef" :skills="skillsLan" />
+      </div>
+      <div class="skills-list">
+        <SkillCard ref="skillsToolCardRef" :skills="skillsTool" />
       </div>
     </section>
     <section ref="projectsSection" class="projectsSection animated-section">
-      <h2>프로젝트</h2>
+      <h2 class="contentsTitle">프로젝트</h2>
       <div v-for="(project, index) in projects" class="project-list" :key="index">
         <ProjectCard
             :title="project.title"
@@ -23,7 +20,7 @@
       </div>
     </section>
     <section ref="contactSection" class="contactSection animated-section">
-      <h2>연락처</h2>
+      <h2 class="contentsTitle">연락처</h2>
       <p>이메일: example@example.com</p>
       <p>GitHub: <a href="https://github.com/username">username</a></p>
     </section>
@@ -34,6 +31,7 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
+import FirstPage from "./components/FirstPage.vue";
 import ProjectCard from './components/ProjectCard.vue';
 import SkillCard from './components/SkillCard.vue';
 import Footer from './components/MainFooter.vue';
@@ -41,24 +39,26 @@ import Footer from './components/MainFooter.vue';
 export default defineComponent({
   name: 'App',
   components: {
+    FirstPage,
     ProjectCard,
     SkillCard,
     Footer,
   },
   setup() {
-    const introSection = ref(null);
     const skillsSection = ref(null);
     const projectsSection = ref(null);
     const contactSection = ref(null);
-    const skillCardRef = ref<InstanceType<typeof SkillCard> | null>(null); // 타입 지정
+    const skillsLanCardRef = ref<InstanceType<typeof SkillCard> | null>(null);
+    const skillsToolCardRef = ref<InstanceType<typeof SkillCard> | null>(null);
 
     const store = useStore();
 
     const projects = computed(() => store.state.projects);
-    const skills = computed(() => store.state.skills);
+    const skillsLan = computed(() => store.state.skillsLan);
+    const skillsTool = computed(() => store.state.skillsTool);
 
     onMounted(() => {
-      const sections = [introSection.value, skillsSection.value, projectsSection.value, contactSection.value];
+      const sections = [skillsSection.value, projectsSection.value, contactSection.value];
 
       const observer = new IntersectionObserver(
           (entries) => {
@@ -67,8 +67,11 @@ export default defineComponent({
                 entry.target.classList.add('visible');
 
                 if (entry.target === skillsSection.value) {
-                  if (skillCardRef.value) {
-                    skillCardRef.value.animateProgressBars(); // 메서드 호출
+                  if (skillsLanCardRef.value) {
+                    skillsLanCardRef.value.animateProgressBars(); // 첫 번째 SkillCard 메서드 호출
+                  }
+                  if (skillsToolCardRef.value) {
+                    skillsToolCardRef.value.animateProgressBars(); // 두 번째 SkillCard 메서드 호출
                   }
                 }
               }
@@ -82,9 +85,9 @@ export default defineComponent({
           observer.observe(section);
         }
       });
-    });
+    }); // onMounted
 
-    return { introSection, skillsSection, projectsSection, contactSection, skills, projects, skillCardRef };
+    return { skillsSection, projectsSection, contactSection, skillsLan, skillsTool, projects, skillsLanCardRef, skillsToolCardRef };
   },
 });
 </script>
@@ -99,6 +102,13 @@ export default defineComponent({
 .animated-section.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.contentsTitle {
+  position: relative;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .introSection {
@@ -117,7 +127,7 @@ export default defineComponent({
 
 .skillsSection {
   padding: 4rem 2rem;
-  background-color: #fff;
+  background-color: #f5f7fb;
   color: #333;
 
   h2 {
