@@ -4,9 +4,11 @@
     <section ref="skillsSection" class="skillsSection animated-section">
       <h2 class="contentsTitle">기술 스택</h2>
       <div class="skills-list">
+        <p>언어 / 프레임워크</p>
         <SkillCard ref="skillsLanCardRef" :skills="skillsLan" />
       </div>
       <div class="skills-list">
+        <p>개발 도구 / 라이브러리</p>
         <SkillCard ref="skillsToolCardRef" :skills="skillsTool" />
       </div>
     </section>
@@ -25,6 +27,7 @@
       <p>GitHub: <a href="https://github.com/username">username</a></p>
     </section>
     <Footer />
+    <TrailEffect />
   </div>
 </template>
 
@@ -97,6 +100,9 @@ export default defineComponent({
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
+
+  padding: 4rem 2rem;
+  color: #333;
 }
 
 .animated-section.visible {
@@ -113,9 +119,7 @@ export default defineComponent({
 
 .introSection {
   height: 100vh;
-  text-align: center;
   background-color: #f7f9fc;
-  color: #333;
 
   h1 {
     font-size: 2rem;
@@ -126,35 +130,24 @@ export default defineComponent({
 }
 
 .skillsSection {
-  padding: 4rem 2rem;
   background-color: #f5f7fb;
-  color: #333;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 1fr;
 
   h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    text-align: center;
+    grid-column: 1 / -1;
   }
 
   .skills-list {
     display: flex;
-    justify-content: center;
-    gap: 1.5rem;
+    align-items: center;
+    flex-direction: column;
   }
 }
 
 .projectsSection {
-  padding: 4rem 2rem;
   background-color: #f7f9fc;
-  color: #333;
-
-  h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
 
   .project-list {
     display: flex;
@@ -164,16 +157,8 @@ export default defineComponent({
 }
 
 .contactSection {
-  padding: 4rem 2rem;
   background-color: #fff;
-  color: #333;
   text-align: center;
-
-  h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-  }
 
   p {
     font-size: 1.2rem;

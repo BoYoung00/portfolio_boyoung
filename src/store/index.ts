@@ -1,21 +1,5 @@
 import { createStore } from 'vuex';
-
-interface Project {
-    id: number;
-    title: string;
-    description: string;
-}
-
-interface Skill {
-    name: string;
-    percent: number;
-}
-
-interface State {
-    projects: Project[];
-    skillsLan: Skill[];
-    skillsTool: Skill[];
-}
+import {Project, Skill, State} from "@/type/moudules";
 
 export default createStore<State>({
     state: {
@@ -24,42 +8,40 @@ export default createStore<State>({
             { id: 2, title: 'Project 2', description: 'This is another project.' },
         ],
         skillsLan: [
-            { name: 'React', percent: 90 },
-            { name: 'Vue3', percent: 75 },
-            { name: 'HTML5', percent: 90 },
-            { name: 'CSS3', percent: 90 },
-            { name: 'SCSS', percent: 90 },
-            { name: 'JavaScript', percent: 85 },
-            { name: 'TypeScript', percent: 90 },
-            { name: 'Android', percent: 65 },
-            { name: 'JAVA', percent: 80 },
-            { name: 'Kotlin', percent: 80 },
-            { name: 'C / C++ / C#', percent: 70 },
-            { name: 'Python', percent: 75 },
-            { name: 'Spring', percent: 75 },
-            { name: '.Net', percent: 70 },
-            { name: 'JSP', percent: 80 },
-            { name: 'MySQL', percent: 80 },
-            { name: 'Oracle', percent: 75 },
-            { name: 'Django', percent: 70 },
-            { name: 'jQuery', percent: 65 },
-            { name: 'Redux', percent: 65 },
+            { name: 'React', percent: 90, icon: 'fa-brands fa-react' },
+            { name: 'Vue3', percent: 75, icon: 'fa-brands fa-vuejs' },
+            { name: 'HTML5', percent: 90, icon: 'fa-brands fa-html5' },
+            { name: 'CSS3', percent: 90, icon: 'fa-brands fa-css3' },
+            { name: 'SCSS', percent: 90, icon: 'fa-brands fa-sass' },
+            { name: 'JavaScript', percent: 80, icon: 'fa-brands fa-js' },
+            { name: 'TypeScript', percent: 85, icon: 'fa-brands fa-js-square' },
+            { name: 'Android', percent: 50, icon: 'fa-brands fa-android' },
+            { name: 'JAVA', percent: 75, icon: 'fa-brands fa-java' },
+            { name: 'Kotlin', percent: 75, icon: 'fa-brands fa-font-awesome' },
+            { name: 'C++/C#', percent: 70, icon: 'fa-solid fa-c' },
+            { name: 'Python', percent: 75, icon: 'fa-brands fa-python' },
+            { name: 'Spring', percent: 75, icon: 'fa-brands fa-java' },
+            { name: '.Net', percent: 50, icon: 'fa-brands fa-microsoft' },
+            { name: 'JSP', percent: 80, icon: 'fa-brands fa-java' },
+            { name: 'MySQL', percent: 80, icon: 'fa-solid fa-database' },
+            { name: 'Oracle', percent: 75, icon: 'fa-solid fa-database' },
+            { name: 'Django', percent: 65, icon: 'fa-brands fa-python' },
         ],
         skillsTool: [
-            { name: 'IntelliJ', percent: 80 },
-            { name: 'Visual Studio Code', percent: 70 },
-            { name: 'Visual Studio 2022', percent: 90 },
-            { name: 'Eclipse', percent: 60 },
-            { name: 'PyCharm', percent: 70 },
-            { name: 'Git Hub', percent: 75 },
-            { name: 'Source tree', percent: 70 },
-            { name: 'Figma', percent: 85 },
-            { name: 'GCP', percent: 50 },
-            { name: 'AWS', percent: 50 },
-            { name: 'Vercel', percent: 55 },
-            { name: 'StarUML', percent: 70 },
-            { name: 'Ps', percent: 50 },
-            { name: 'Unity', percent: 55 },
+            { name: 'jQuery', percent: 55, icon: 'fa-brands fa-square-js' },
+            { name: 'Redux', percent: 65, icon: 'fa-brands fa-js' },
+            { name: 'IntelliJ', percent: 80, icon: 'fa-brands fa-java' },
+            { name: 'VSC', percent: 70, icon: 'fa-solid fa-code' },
+            { name: 'VS2022', percent: 70, icon: 'fa-brands fa-microsoft' },
+            { name: 'Eclipse', percent: 60, icon: 'fa-brands fa-java' },
+            { name: 'PyCharm', percent: 70, icon: 'fa-brands fa-python' },
+            { name: 'Git', percent: 75, icon: 'fa-brands fa-github' },
+            { name: 'Figma', percent: 85, icon: 'fa-brands fa-figma' },
+            { name: 'GCP', percent: 50, icon: 'fa-brands fa-google' },
+            { name: 'AWS', percent: 50, icon: 'fa-brands fa-amazon' },
+            { name: 'Vercel', percent: 55, icon: 'fa-brands fa-vuejs' },
+            { name: 'Docker', percent: 50, icon: 'fa-brands fa-docker' },
+            { name: 'StarUML', percent: 70, icon: 'fa-solid fa-star' },
         ],
     },
     mutations: {
@@ -81,7 +63,7 @@ export default createStore<State>({
             commit('addSkillsLan', skill);
         },
         addSkillsTool({ commit }, skill: Skill) {
-            commit('skillsTool', skill);
+            commit('addSkillsTool', skill);
         },
     },
 });

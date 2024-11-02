@@ -9,7 +9,7 @@
     <div
         :class="['penguin-icon', isMoving ? 'moving' : '', isFlipped ? 'flipped' : '']"
         :style="{ top: `${position.y}px`, left: `${position.x - 50}px` }"
-    ></div>
+    />
     <div v-if="showClickText" class="click-text" :style="{ top: `${mousePosition.y - 15}px`, left: `${mousePosition.x - 20}px` }">Click!</div>
   </div>
 </template>
@@ -157,5 +157,33 @@ export default defineComponent({
   font-weight: bold;
   color: #f66368;
   transform: translate(-50%, -50%);
+}
+
+// 트레일 효과 디자인
+.trail-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.moving-element {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: blue;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: top 0.5s, left 0.5s;
+}
+
+.trail {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: rgba(0, 0, 255, 0.5);
+  border-radius: 50%;
+  transition: opacity 1s, transform 1s;
 }
 </style>

@@ -6,7 +6,10 @@
         :key="index"
         ref="progressRefs"
     >
-      <p>{{ skill.name }}</p>
+      <p class="skill-name">
+        <font-awesome-icon :icon="skill.icon" />
+        &nbsp;{{ skill.name }}
+      </p>
       <div class="progress-container">
         <div
             class="progress-bar"
@@ -21,14 +24,14 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-
-interface Skill {
-  name: string;
-  percent: number;
-}
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {Skill} from "@/type/moudules";
 
 export default defineComponent({
   name: 'SkillCard',
+  components: {
+    FontAwesomeIcon,
+  },
   props: {
     skills: {
       type: Array as () => Skill[],
@@ -63,15 +66,24 @@ export default defineComponent({
 <style scoped lang="scss">
 .skills-container {
   width: 50%;
+  min-width: 13rem;
   display: flex;
   flex-direction: column;
+  white-space: nowrap;
 }
 
 .skill-card {
   width: 100%;
-  //padding: .3rem;
   transition: box-shadow 0.3s ease;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.skill-name {
+  width: 9rem;
+  color: #334b7e;
+  font-size: 1rem;
 }
 
 .progress-container {
@@ -79,6 +91,7 @@ export default defineComponent({
   background-color: #e0e0e0;
   border-radius: 5px;
   overflow: hidden;
+  margin-left: 10px;
 }
 
 .progress-bar {
