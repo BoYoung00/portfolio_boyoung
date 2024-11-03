@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <FirstPage />
     <section ref="skillsSection" class="skillsSection animated-section">
       <h2 class="contentsTitle">기술 스택</h2>
@@ -14,20 +14,24 @@
     </section>
     <section ref="projectsSection" class="projectsSection animated-section">
       <h2 class="contentsTitle">프로젝트</h2>
-      <div v-for="(project, index) in projects" class="project-list" :key="index">
+      <div class="project-list">
         <ProjectCard
+            v-for="(project, index) in projects"
+            :id="project.id"
             :title="project.title"
             :description="project.description"
+            :key="index"
+            @open-modal="openModal"
         />
       </div>
     </section>
-    <section ref="contactSection" class="contactSection animated-section">
-      <h2 class="contentsTitle">연락처</h2>
-      <p>이메일: example@example.com</p>
-      <p>GitHub: <a href="https://github.com/username">username</a></p>
-    </section>
     <Footer />
-    <TrailEffect />
+
+    <CardModal
+        v-if="isModalOpen"
+        :content="modalContent"
+        @close="isModalOpen = false"
+    />
   </div>
 </template>
 
@@ -38,6 +42,8 @@ import FirstPage from "./components/FirstPage.vue";
 import ProjectCard from './components/ProjectCard.vue';
 import SkillCard from './components/SkillCard.vue';
 import Footer from './components/MainFooter.vue';
+import CardModal from './components/CardModal.vue';
+import {Project} from "@/type/moudules";
 
 export default defineComponent({
   name: 'App',
@@ -46,8 +52,10 @@ export default defineComponent({
     ProjectCard,
     SkillCard,
     Footer,
+    CardModal,
   },
   setup() {
+    // 기존 상태 및 참조들
     const skillsSection = ref(null);
     const projectsSection = ref(null);
     const contactSection = ref(null);
@@ -60,9 +68,24 @@ export default defineComponent({
     const skillsLan = computed(() => store.state.skillsLan);
     const skillsTool = computed(() => store.state.skillsTool);
 
+    // 모달 상태 및 내용 관리
+    const isModalOpen = ref(false);
+    const modalContent = ref({ title: '', description: '' });
+
+    // 모달 열기 메서드
+    const openModal = (content: Project) => {
+      modalContent.value = content;
+      isModalOpen.value = true;
+    };
+
+    // 모달 닫기 메서드
+    const closeModal = () => {
+      isModalOpen.value = false;
+    };
+
+    // onMounted 내용 그대로
     onMounted(() => {
       const sections = [skillsSection.value, projectsSection.value, contactSection.value];
-
       const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
@@ -71,10 +94,10 @@ export default defineComponent({
 
                 if (entry.target === skillsSection.value) {
                   if (skillsLanCardRef.value) {
-                    skillsLanCardRef.value.animateProgressBars(); // 첫 번째 SkillCard 메서드 호출
+                    skillsLanCardRef.value.animateProgressBars();
                   }
                   if (skillsToolCardRef.value) {
-                    skillsToolCardRef.value.animateProgressBars(); // 두 번째 SkillCard 메서드 호출
+                    skillsToolCardRef.value.animateProgressBars();
                   }
                 }
               }
@@ -88,14 +111,32 @@ export default defineComponent({
           observer.observe(section);
         }
       });
-    }); // onMounted
+    });
 
-    return { skillsSection, projectsSection, contactSection, skillsLan, skillsTool, projects, skillsLanCardRef, skillsToolCardRef };
+    return {
+      skillsSection,
+      projectsSection,
+      contactSection,
+      skillsLan,
+      skillsTool,
+      projects,
+      skillsLanCardRef,
+      skillsToolCardRef,
+      isModalOpen,
+      modalContent,
+      openModal,
+      closeModal,
+    };
   },
 });
 </script>
 
 <style scoped lang="scss">
+.app {
+  margin: 0; padding: 0;
+  width: 100%; height: 100%;
+}
+
 .animated-section {
   opacity: 0;
   transform: translateY(30px);
@@ -143,35 +184,21 @@ export default defineComponent({
     display: flex;
     align-items: center;
     flex-direction: column;
+
+
+    & > p { width: 60%; text-align: left; }
   }
 }
 
 .projectsSection {
-  background-color: #f7f9fc;
+  background-color: white;
+  padding-bottom: 6rem;
 
   .project-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-  }
-}
-
-.contactSection {
-  background-color: #fff;
-  text-align: center;
-
-  p {
-    font-size: 1.2rem;
-    margin: 0.5rem 0;
-  }
-
-  a {
-    color: #007acc;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
+    align-items: center;
+    gap: 2rem;
   }
 }
 </style>

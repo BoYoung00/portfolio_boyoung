@@ -13,11 +13,11 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'ProjectCard',
-  props: ['title', 'description'],
+  props: ['title', 'description', 'id'],
   emits: ['open-modal'],
   methods: {
     openModal() {
-      this.$emit('open-modal', { title: this.title, description: this.description });
+      this.$emit('open-modal', { id: this.id, title: this.title, description: this.description });
     },
   },
 });
@@ -25,17 +25,20 @@ export default defineComponent({
 
 <style scoped lang="scss">
   .project-card {
-    width: 200px;
+    width: 50%;
     padding: 2rem;
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #dadae1;
 
-    h3 {
-      color: #333;
+    & > h3 {
+      color: #3b81f5;
       margin-bottom: 0.5rem;
+      font-weight: bold;
     }
 
     p {

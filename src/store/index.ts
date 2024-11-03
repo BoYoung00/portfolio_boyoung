@@ -4,12 +4,12 @@ import {Project, Skill, State} from "@/type/moudules";
 export default createStore<State>({
     state: {
         projects: [
-            { id: 1, title: 'Project 1', description: 'This is a sample project.' },
-            { id: 2, title: 'Project 2', description: 'This is another project.' },
+            { id: 1, title: 'D-SIM', description: '데이터베이스 관리와 백엔드 개발을 간소화하고, 직관적인 UI/UX와 다양한 데이터 활용 기능을 제공하는 웹 서비스' },
+            { id: 2, title: 'Data Source', description: '팀 협업을 위한 데이터베이스 관리 및 버전 제어 기능을 제공하며, 자동화된 템플릿 코드 지원을 통해 효율적인 데이터 활용을 돕는 웹 서비스' },
         ],
         skillsLan: [
             { name: 'React', percent: 90, icon: 'fa-brands fa-react' },
-            { name: 'Vue3', percent: 75, icon: 'fa-brands fa-vuejs' },
+            { name: 'Vue3', percent: 70, icon: 'fa-brands fa-vuejs' },
             { name: 'HTML5', percent: 90, icon: 'fa-brands fa-html5' },
             { name: 'CSS3', percent: 90, icon: 'fa-brands fa-css3' },
             { name: 'SCSS', percent: 90, icon: 'fa-brands fa-sass' },
@@ -25,7 +25,7 @@ export default createStore<State>({
             { name: 'JSP', percent: 80, icon: 'fa-brands fa-java' },
             { name: 'MySQL', percent: 80, icon: 'fa-solid fa-database' },
             { name: 'Oracle', percent: 75, icon: 'fa-solid fa-database' },
-            { name: 'Django', percent: 65, icon: 'fa-brands fa-python' },
+            { name: 'Django', percent: 40, icon: 'fa-brands fa-python' },
         ],
         skillsTool: [
             { name: 'jQuery', percent: 55, icon: 'fa-brands fa-square-js' },
@@ -35,13 +35,12 @@ export default createStore<State>({
             { name: 'VS2022', percent: 70, icon: 'fa-brands fa-microsoft' },
             { name: 'Eclipse', percent: 60, icon: 'fa-brands fa-java' },
             { name: 'PyCharm', percent: 70, icon: 'fa-brands fa-python' },
-            { name: 'Git', percent: 75, icon: 'fa-brands fa-github' },
+            { name: 'Git', percent: 70, icon: 'fa-brands fa-github' },
             { name: 'Figma', percent: 85, icon: 'fa-brands fa-figma' },
-            { name: 'GCP', percent: 50, icon: 'fa-brands fa-google' },
-            { name: 'AWS', percent: 50, icon: 'fa-brands fa-amazon' },
-            { name: 'Vercel', percent: 55, icon: 'fa-brands fa-vuejs' },
-            { name: 'Docker', percent: 50, icon: 'fa-brands fa-docker' },
+            { name: 'AWS', percent: 40, icon: 'fa-brands fa-amazon' },
+            { name: 'Vercel', percent: 50, icon: 'fa-brands fa-vuejs' },
             { name: 'StarUML', percent: 70, icon: 'fa-solid fa-star' },
+            { name: 'Notion', percent: 60, icon: 'fa-solid fa-book' },
         ],
     },
     mutations: {

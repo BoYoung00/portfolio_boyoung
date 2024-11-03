@@ -60,9 +60,9 @@ export default defineComponent({
           currentTextIndex.value = 2;
           setTimeout(() => {
             currentTextIndex.value = 3;
-          }, 1000);
-        }, 1000);
-      }, 1000);
+          }, 600);
+        }, 600);
+      }, 600);
     });
 
     return {

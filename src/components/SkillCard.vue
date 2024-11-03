@@ -65,8 +65,8 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .skills-container {
-  width: 50%;
-  min-width: 13rem;
+  width: 60%;
+  min-width: 12rem;
   display: flex;
   flex-direction: column;
   white-space: nowrap;
@@ -84,6 +84,8 @@ export default defineComponent({
   width: 9rem;
   color: #334b7e;
   font-size: 1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .progress-container {
