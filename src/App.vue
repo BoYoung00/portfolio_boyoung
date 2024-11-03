@@ -202,7 +202,12 @@ export default defineComponent({
     flex-direction: column;
 
 
-    & > p { width: 60%; text-align: left; }
+    & > p {
+      width: 60%;
+      text-align: left;
+      white-space: nowrap;
+      //min-width: 12rem;
+    }
   }
 }
 

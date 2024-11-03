@@ -8,9 +8,9 @@
     <div class="down-arrow">↓</div>
     <div
         :class="['penguin-icon', isMoving ? 'moving' : '', isFlipped ? 'flipped' : '']"
-        :style="{ top: `${position.y}px`, left: `${position.x - 50}px` }"
+        :style="{ top: `${position.y}px`, left: `${position.x - 25}px` }"
     />
-    <div v-if="showClickText" class="click-text" :style="{ top: `${mousePosition.y - 15}px`, left: `${mousePosition.x - 20}px` }">Click!</div>
+    <div v-if="showClickText" class="click-text" :style="{ top: `${mousePosition.y}px`, left: `${mousePosition.x - 20}px` }">Click!</div>
   </div>
 </template>
 
@@ -36,6 +36,7 @@ export default defineComponent({
       mousePosition.value = { x: event.clientX, y: event.clientY };
     };
 
+    // 펭귄 움직이기
     const handleClick = (event: MouseEvent) => {
       if (!isMoving.value) {
         isMoving.value = true;

@@ -29,7 +29,7 @@
     <ul>
       <li><strong>운영 체제</strong> : Windows11, MacOS</li>
       <li><strong>개발 도구</strong> : IntelliJ IDEA, Spring Boot, MySQL</li>
-      <li><strong>개발 언어</strong> : Kotlin, React, JavaScript</li>
+      <li><strong>개발 언어</strong> : Kotlin, React, JavaScript, CSS</li>
     </ul>
 
     <h3>6. 작업 기여도</h3>
@@ -75,10 +75,10 @@
       <li><strong>해결</strong> : 깃과 데이터베이스 제약 사항에 대해 더욱 공부하고 이해도를 높여, 여러 가지 기능을 최대한 적용 시켰습니다.</li>
     </ul>
 
-    <h3>8. 성과와 개선점</h3>
+    <h3>8. 성과 및 보완 사항</h3>
     <ul>
       <li><strong>성과</strong> : 졸업 작품 발표 팀에 선정 되었습니다.</li>
-      <li><strong>개선점</strong> : 코드의 가독성과 유지 보수성이 떨어지며, 데이터가 과도한 메모리를 차지하는 문제가 있습니다. 또한, 사용자 경험을 고려하지 않은 UI 디자인이 개선되어야 합니다. 이러한 문제점들을 해결하기 위해 프로젝트를 재구성하여 <strong>버전 2를 제작하기로 결정</strong>했습니다.</li>
+      <li><strong>보완 사항</strong> : 코드의 가독성과 유지 보수성이 떨어지며, 데이터가 과도한 메모리를 차지하는 문제가 있습니다. 또한, 사용자 경험을 고려하지 않은 UI 디자인이 개선되어야 합니다. 이러한 문제점들을 해결하기 위해 프로젝트를 재구성하여 <strong>버전 2를 제작하기로 결정</strong>했습니다.</li>
     </ul>
 
     <h3>9. 시연 동영상</h3>
@@ -90,53 +90,8 @@
 
 <script>
 export default {
-  name: "dataSource"
+  name: "DataSource"
 }
 </script>
 
-<style scoped lang="scss">
-.container {
-  width: 80%;
-  padding: 1rem;
-  line-height: 1.6;
-  margin: 0 auto;
-
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #5880f4;
-  }
-
-  h3 {
-    color: #555;
-    margin-top: 20px;
-  }
-
-  li {
-    margin-bottom: .5rem;
-  }
-
-  a {
-    color: #007BFF;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  .video {
-    width: 70%;
-    min-width: 20rem;
-    border: 1px solid #c7c7c7;
-  }
-}
-
-.contribution {
-  background-color: #efefee;
-  border-radius: 5px;
-  padding: 1.5rem;
-  margin: 15px 0;
-  font-weight: bold;
-}
-</style>
+<style lang="scss" src="./projects.scss" />

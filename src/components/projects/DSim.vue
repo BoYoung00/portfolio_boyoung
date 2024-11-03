@@ -34,7 +34,7 @@
     <ul>
       <li><strong>운영 체제</strong> : Windows11, MacOS</li>
       <li><strong>개발 도구</strong> : IntelliJ IDEA, Spring Boot, MySQL</li>
-      <li><strong>개발 언어</strong> : Kotlin, Coroutine, TypeScript, React</li>
+      <li><strong>개발 언어</strong> : Kotlin, Coroutine, TypeScript, React, SCSS</li>
       <li><strong>배포 및 서비스 환경</strong> : GCP</li>
     </ul>
 
@@ -101,10 +101,10 @@
       <li><strong>해결</strong> : `useEffect`를 사용하여 컴포넌트가 초기화될 때 선택 박스의 값을 설정함으로써 문제를 해결하였습니다.</li>
     </ul>
 
-    <h3>8. 성과와 개선점</h3>
+    <h3>8. 성과 및 보완 사항</h3>
     <ul>
       <li><strong>성과</strong> : 버전1 보다 UX가 직관적이고 깔끔하며, 다양한 활용 기능 덕분에 사용자들에게 유용하다는 긍정적인 평가를 받았습니다.</li>
-      <li><strong>개선점</strong> : 데이터베이스 설계를 위한 ERD 모드의 연관 관계 기능을 개선하고, 디버깅을 진행해야 합니다.</li>
+      <li><strong>보완 사항</strong> : 데이터베이스 설계를 위한 ERD 모드의 연관 관계 기능을 개선하고, 디버깅을 진행해야 합니다.</li>
     </ul>
 
     <h3>9. 시연 동영상</h3>
@@ -121,45 +121,8 @@
 
 <script>
 export default {
-  name: "dSim"
+  name: "DSim"
 }
 </script>
 
-<style scoped lang="scss">
-.container {
-  width: 80%;
-  padding: 1rem;
-  line-height: 1.6;
-  margin: 0 auto;
-
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #5880f4;
-  }
-
-  h3 {
-    color: #555;
-    margin-top: 20px;
-  }
-
-  li { margin-bottom: .5rem; }
-
-  a {
-    color: #007BFF;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-.contribution {
-  background-color: #efefee;
-  border-radius: 5px;
-  padding: 1.5rem;
-  margin: 15px 0;
-  font-weight: bold;
-}
-</style>
+<style lang="scss" src="./projects.scss" />

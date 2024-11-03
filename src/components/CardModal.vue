@@ -11,8 +11,9 @@
 
 <script lang="ts">
 import {Component, defineComponent, ref, watch} from 'vue';
-import DSim from './DSim.vue'; // D-SIM 컴포넌트 경로
-import DataSource from './DataSource.vue'; // DataSource 컴포넌트 경로
+import DSim from './projects/DSim.vue';
+import DataSource from './projects/DataSource.vue';
+import PortfolioBY from './projects/PortfolioBY.vue';
 
 export default defineComponent({
   name: 'CardModal',
@@ -21,14 +22,15 @@ export default defineComponent({
   setup(props, { emit }) {
     const currentComponent = ref<Component | null>(null);
 
-    // ID에 따라 현재 컴포넌트를 결정
     watch(
         () => props.content.id,
         (newId) => {
           if (newId === 1) {
-            currentComponent.value = DSim; // D-SIM 컴포넌트
+            currentComponent.value = DSim;
+          } else if (newId === 2) {
+            currentComponent.value = DataSource;
           } else {
-            currentComponent.value = DataSource; // DataSource 컴포넌트
+            currentComponent.value = PortfolioBY;
           }
         },
         { immediate: true } // 컴포넌트가 마운트될 때도 실행

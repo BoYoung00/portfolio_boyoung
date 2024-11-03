@@ -66,7 +66,7 @@ export default defineComponent({
 <style scoped lang="scss">
 .skills-container {
   width: 60%;
-  min-width: 12rem;
+  min-width: 11rem;
   display: flex;
   flex-direction: column;
   white-space: nowrap;

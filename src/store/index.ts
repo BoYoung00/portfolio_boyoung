@@ -6,6 +6,7 @@ export default createStore<State>({
         projects: [
             { id: 1, title: 'D-SIM', description: '데이터베이스 관리와 백엔드 개발을 간소화하고, 직관적인 UI/UX와 다양한 데이터 활용 기능을 제공하는 웹 서비스' },
             { id: 2, title: 'Data Source', description: '팀 협업을 위한 데이터베이스 관리 및 버전 제어 기능을 제공하며, 자동화된 템플릿 코드 지원을 통해 효율적인 데이터 활용을 돕는 웹 서비스' },
+            { id: 3, title: 'PortfolioBY', description: '나를 소개하는 포트폴리오 웹 사이트' },
         ],
         skillsLan: [
             { name: 'React', percent: 90, icon: 'fa-brands fa-react' },
