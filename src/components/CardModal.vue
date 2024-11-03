@@ -74,7 +74,6 @@ export default defineComponent({
 
 .scrollable-content {
   overflow-y: auto;
-  max-height: 60vh;
 }
 
 .close-button {
