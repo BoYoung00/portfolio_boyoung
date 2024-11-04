@@ -51,7 +51,21 @@ export default defineComponent({
           setTimeout(() => {
             const percent = ref.dataset.percent;
             if (percent) {
+              const percentNum = Number(percent)
               ref.style.width = `${percent}%`;
+
+              // percent의 값에 따라 색상 조정
+              if (percentNum >= 80) {
+                ref.style.backgroundColor = '#16a34a';
+              } else if (percentNum >= 60) {
+                ref.style.backgroundColor = '#3b82f6';
+              } else if (percentNum >= 40) {
+                ref.style.backgroundColor = '#facc15';
+              } else if (percentNum >= 20) {
+                ref.style.backgroundColor = '#f97316';
+              } else {
+                ref.style.backgroundColor = '#ef4444';
+              }
             }
           }, index * 200);
         }

@@ -1,5 +1,10 @@
 <template>
   <div class="app">
+    <Header
+        :skillsSection="skillsSection"
+        :projectsSection="projectsSection"
+        :contactSection="contactSection"
+    />
     <FirstPage />
     <section ref="skillsSection" class="skillsSection animated-section">
       <h2 class="contentsTitle">기술 스택</h2>
@@ -17,22 +22,25 @@
       <div class="project-list">
         <ProjectCard
             v-for="(project, index) in projects"
-            :id="project.id"
-            :title="project.title"
-            :description="project.description"
+            :project="project"
             :key="index"
             @open-modal="openModal"
         />
       </div>
     </section>
-    <Footer />
-
-    <CardModal
-        v-if="isModalOpen"
-        :content="modalContent"
-        @close="isModalOpen = false"
-    />
+    <section  ref="contactSection" class="contactSection">
+      <Footer />
+    </section>
+    <button v-if="showScrollButton" class="scroll-to-top" @click="scrollToTop">
+      ↑
+    </button>
   </div>
+
+  <CardModal
+      v-if="isModalOpen"
+      :content="modalContent"
+      @close="isModalOpen = false"
+  />
 </template>
 
 <script lang="ts">
@@ -41,6 +49,7 @@ import { useStore } from 'vuex';
 import FirstPage from "./components/FirstPage.vue";
 import ProjectCard from './components/ProjectCard.vue';
 import SkillCard from './components/SkillCard.vue';
+import Header from './components/MainHeader.vue';
 import Footer from './components/MainFooter.vue';
 import CardModal from './components/CardModal.vue';
 import {Project} from "@/type/moudules";
@@ -52,6 +61,7 @@ export default defineComponent({
     ProjectCard,
     SkillCard,
     Footer,
+    Header,
     CardModal,
   },
   setup() {
@@ -61,6 +71,7 @@ export default defineComponent({
     const contactSection = ref(null);
     const skillsLanCardRef = ref<InstanceType<typeof SkillCard> | null>(null);
     const skillsToolCardRef = ref<InstanceType<typeof SkillCard> | null>(null);
+    const showScrollButton = ref(false);
 
     const store = useStore();
 
@@ -82,6 +93,17 @@ export default defineComponent({
     const closeModal = () => {
       isModalOpen.value = false;
     };
+
+    // 맨 위로 스크롤
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // 가장 하단에 버튼 배치치
+   const handleScroll = () => {
+      showScrollButton.value = window.scrollY > window.innerHeight;
+    };
+
 
     // onMounted 내용 그대로
     onMounted(() => {
@@ -111,6 +133,8 @@ export default defineComponent({
           observer.observe(section);
         }
       });
+
+      window.addEventListener('scroll', handleScroll);
     });
 
     return {
@@ -126,6 +150,8 @@ export default defineComponent({
       modalContent,
       openModal,
       closeModal,
+      scrollToTop,
+      showScrollButton,
     };
   },
 });
@@ -138,7 +164,8 @@ export default defineComponent({
   caret-color: transparent;
 
   ::-webkit-scrollbar {
-    width: 12px;
+    width: .6rem;
+    height: .6rem;
   }
   ::-webkit-scrollbar-track {
     background: #f1f1f1;
@@ -157,7 +184,6 @@ export default defineComponent({
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
-
   padding: 4rem 2rem;
   color: #333;
 }
@@ -206,13 +232,12 @@ export default defineComponent({
       width: 60%;
       text-align: left;
       white-space: nowrap;
-      //min-width: 12rem;
     }
   }
 }
 
 .projectsSection {
-  background-color: white;
+  background-color: #ffffff;
   padding-bottom: 6rem;
 
   .project-list {
@@ -221,5 +246,18 @@ export default defineComponent({
     align-items: center;
     gap: 2rem;
   }
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: .5rem .8rem;
+  background: transparent;
+  color: #3b82f6;
+  border: 3px solid #3b82f6;
+  border-radius: 100%;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 </style>

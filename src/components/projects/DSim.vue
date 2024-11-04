@@ -44,9 +44,15 @@
       사용자 친화적이지 못했던 버전1의 UI/UX를 개선하였습니다.
     </aside>
     <ul>
-      <li>버전 1의 UI는 사용자가 기능을 직관적으로 이해하기 어려웠으며, 유사한 기능을 여러 페이지에서 사용해야 하는 불편함이 있었습니다. 이를 개선하기 위해 MS 오피스 UI에서 영감을 받아 여러 기능을 한 화면에서 사용할 수 있도록 <strong>UX를 개선</strong>하였습니다.</li>
-      <li>피그마를 활용해 팀원들과 원활하게 소통하며 UX 분석을 진행하였습니다.</li>
-      <li>피그마 링크: <a href="https://www.figma.com/design/HiQLcOQqoFMVGuJVzhZVtu/%EC%B4%88%EC%95%88%EC%9E%90?node-id=0-1&node-type=canvas&t=N1lXmfxddxWVJPAB-0" target="_blank">피그마 링크</a></li>
+      <li>버전 1의 UI는 사용자가 기능을 직관적으로 이해하기 어려웠으며, 유사한 기능을 여러 페이지에서 사용해야 하는 불편함이 있었습니다. 이를 개선하기 위해 MS 오피스 UI에서 영감을 받아 여러 기능을 한 화면에서 사용할 수 있도록 <strong>UI를 개선</strong>하였습니다.</li>
+      <li><strong>버전1 UI 프로토타입</strong> : 데이터베이스 생성부터 테이블 활용까지의 과정</li>
+      <div class="imgBox">
+        <img :src="require('@/assets/images/dataSource.png')" alt="DataSource" />
+      </div>
+      <li><strong>버전2 UX</strong> : 버전1의 잦은 화면 전환 문제를 개선한 버전2의 UI</li>
+      <img class="dSimImage" :src="require('@/assets/images/dSim.png')" alt="DataSource" />
+      <li>그 외에도 피그마를 활용해 팀원들과 원활하게 소통하며 UX 분석을 진행하였습니다.</li>
+      <li><strong>피그마 링크</strong> : <a href="https://www.figma.com/design/HiQLcOQqoFMVGuJVzhZVtu/%EC%B4%88%EC%95%88%EC%9E%90?node-id=0-1&node-type=canvas&t=N1lXmfxddxWVJPAB-0" target="_blank">D-SIM Figma</a></li>
     </ul>
 
     <aside class="contribution">
@@ -57,7 +63,8 @@
       <li><strong>SCSS 모듈</strong>을 사용해 각 컴포넌트에 독립적인 스타일을 적용하였으며, `App.module.scss` 파일을 생성하여 색상, 폰트, 자주 사용하는 스타일, 그리고 공통 스타일을 정의하였습니다. 이를 통해 모든 컴포넌트에서 해당 스타일을 상속 받아 코드의 <strong>재사용성을 높이고</strong>, 유지 보수가 쉽도록 하였습니다.</li>
       <li>`.env` 파일을 사용하여 서버와의 <strong>통신 URL을 관리</strong>하였습니다.</li>
       <li><strong>Axios</strong> 인스턴스를 생성하여 기본 URL, 인증 헤더, 및 응답 타입을 설정하고, 요청 인터셉터를 추가하여 인증 요청을 자동화하였습니다.</li>
-      <li><strong>Context</strong>를 사용하여 데이터 전역 상태 관리를 하였습니다. 훅과 컴포넌트를 분리하는 리팩토링을 진행하여 <strong>코드의 가독성</strong>을 높였습니다.</li>
+      <li><strong>Context</strong>를 사용하여 데이터 전역 상태 관리를 하였습니다. </li>
+      <li>훅과 컴포넌트를 분리하는 리팩토링을 진행하여 <strong>코드의 가독성</strong>을 높였습니다.</li>
     </ul>
 
     <aside class="contribution">
@@ -72,11 +79,11 @@
         이미지 및 폰트 최적화 진행
     </aside>
     <ul>
-      <li><strong>Lighthouse</strong>를 사용하여 웹 페이지의 속도를 평가하고, 이미지 크기를 줄이며, 폰트 CDN으로 교체하여 최적화를 진행하였습니다.</li>
+      <li><strong>Lighthouse</strong>를 사용하여 웹 페이지의 속도를 평가하고, 이미지 크기를 줄이며, 폰트를 CDN으로 교체하여 최적화를 진행하였습니다.</li>
     </ul>
 
     <aside class="contribution">
-        졸업 작품 발표 진행
+        졸업 작품회 발표 진행
     </aside>
     <ul>
       <li>PPT와 <strong>대본을 작성</strong>하였고, 시스템 개발에 대해 잘 모르는 사람도 이해할 수 있도록 내용을 쉽게 풀어 설명했습니다.</li>
@@ -126,3 +133,11 @@ export default {
 </script>
 
 <style lang="scss" src="./projects.scss" />
+
+<style lang="scss">
+.dSimImage {
+  border: 1px solid #c7c7c7;
+  width: 30vmax;
+
+}
+</style>

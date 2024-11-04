@@ -1,20 +1,46 @@
 <template>
-  <header class="header">
-    <nav>
-      <a href="#introSection">소개</a>
-      <a href="#projectsSection">프로젝트</a>
-      <a href="#skillsSection">기술 스택</a>
-      <a href="#contactSection">연락처</a>
+  <header :class="['header', { 'header--scrolled': isScrolled }]">
+    <nav class="nav">
+      <ul>
+        <li @click="scrollToSection(skillsSection)">Skills</li>
+        <li @click="scrollToSection(projectsSection)">Projects</li>
+        <li @click="scrollToSection(contactSection)">Contact</li>
+      </ul>
     </nav>
   </header>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue';
 
 export default defineComponent({
-  name: 'MainHeader'
-})
+  name: 'MainHeader',
+  props: {
+    skillsSection: Object,
+    projectsSection: Object,
+    contactSection: Object,
+  },
+  setup() {
+    const isScrolled = ref(false);
+
+    const handleScroll = () => {
+      isScrolled.value = window.scrollY > window.innerHeight - 100;
+    };
+
+    const scrollToSection = (sectionRef: any) => {
+      sectionRef?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    onMounted(() => {
+      window.addEventListener('scroll', handleScroll);
+    });
+
+    return {
+      isScrolled,
+      scrollToSection,
+    };
+  },
+});
 </script>
 
 <style scoped lang="scss">
@@ -22,16 +48,29 @@ export default defineComponent({
   position: fixed;
   top: 0;
   width: 100%;
-  background: #333;
-  color: #fff;
-  padding: 1rem;
-  text-align: center;
-  z-index: 2;
+  transition: background-color 0.3s ease;
+  z-index: 3;
 
-  nav a {
-    color: #fff;
-    margin: 0 1rem;
-    text-decoration: none;
+  &--scrolled {
+    background: #333333;
+    color: white;
+    box-shadow: 1px 0 5px rgb(0, 0, 0.2);
+  }
+
+  .nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  li {
+    //font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #0073e6;
+    }
   }
 }
 </style>
