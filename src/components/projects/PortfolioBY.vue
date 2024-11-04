@@ -23,7 +23,7 @@
       <li><strong>움직이는 펭귄</strong> : <strong>MouseEvent</strong>를 통해 펭귄 아이콘이 클릭한 위치로 이동하는 기능을 넣었습니다. </li>
       <li><strong>스크롤 애니메이션</strong> : <strong>IntersectionObserver</strong>을 통해 스크롤 애니메이션을 넣었습니다. </li>
       <li><strong>스킬 레벨바 애니메이션</strong> : ref로 하위 컴포넌트의 애니메이션을 제어하였습니다. </li>
-<!--      <li><strong>최적화 작업</strong> : PWA 적용으로 정적 자원을 캐싱하여 성능을 개선했습니다. </li>-->
+      <li><strong>최적화 작업</strong> : PWA 적용으로 정적 자원을 캐싱하여 성능을 개선했습니다. </li>
     </ul>
 
     <h3>5. 문제와 해결 과정</h3>
