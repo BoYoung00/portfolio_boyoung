@@ -162,22 +162,6 @@ export default defineComponent({
   margin: 0; padding: 0;
   width: 100%; height: 100%;
   caret-color: transparent;
-
-  ::-webkit-scrollbar {
-    width: .6rem;
-    height: .6rem;
-  }
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
 }
 
 .animated-section {

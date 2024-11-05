@@ -5,6 +5,7 @@ module.exports = defineConfig({
   pwa: {
     workboxOptions: {
       // 정적 자원을 캐시하기 위한 설정
+      cleanupOutdatedCaches: true, // 구버전 캐시를 정리
       runtimeCaching: [
         {
           urlPattern: /\.(?:png|jpg|jpeg|svg|css|js)$/,
