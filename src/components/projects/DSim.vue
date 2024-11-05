@@ -115,9 +115,12 @@
     </ul>
 
     <h3>9. 시연 동영상</h3>
-    <ul>
-      <li>졸업 작품회 발표를 마친 후 업로드 예정</li>
-    </ul>
+    <video class="video" controls muted>
+      <source :src="require('@/assets/video/dSim.mp4')" type="video/mp4" >
+    </video>
+<!--    <ul>-->
+<!--      <li>졸업 작품회 발표를 마친 후 업로드 예정</li>-->
+<!--    </ul>-->
 
     <h3>10. 깃 주소</h3>
     <ul>
